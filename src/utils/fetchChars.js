@@ -30,3 +30,4 @@ export const getComic = async (url) => {
     return [];
   }
 };
+

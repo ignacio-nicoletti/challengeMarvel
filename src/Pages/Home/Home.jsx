@@ -32,13 +32,13 @@ const Home = () => {
     },
     [Listfavourite]
   );
-  console.log (data);
+  console.log (data[0]);
   useEffect (
     () => {
       let datafiltered;
       if (search.includes ('http')) {
         datafiltered = data.filter (
-          el => el.comics.collectionURI.includes(search)//Si lo buscado es un link
+          el => el.comics.collectionURI.includes (search) //Si lo buscado es un link
         );
       } else {
         datafiltered = data.filter (
@@ -78,19 +78,24 @@ const Home = () => {
 
       <div className={styles.cardContain}>
         {search !== '' // en caso de haber algo en la barra de busqueda mapea la informacion filtrada
-          ? currentItems.map (el => (
-              <Cards
-                setOpenModal={setOpenModal}
-                data={el}
-                setCharSelected={setCharSelected}
-              />
+          ? currentItems.map ((el, indice) => (
+              <div key={indice}>
+
+                <Cards
+                  setOpenModal={setOpenModal}
+                  data={el}
+                  setCharSelected={setCharSelected}
+                />
+              </div>
             ))
-          : currentItems.map ((el) => ( // sino mapea todo
-              <Cards
-                setOpenModal={setOpenModal}
-                data={el} //podria pasarle o los parametros necesarios para el mapeo o todo el objeto y luego manipularlo dentro del componente
-                setCharSelected={setCharSelected}
-              />
+          : currentItems.map ((el, indice) => ( // sino mapea todo
+              <div key={indice}>
+                <Cards
+                  setOpenModal={setOpenModal}
+                  data={el} //podria pasarle o los parametros necesarios para el mapeo o todo el objeto y luego manipularlo dentro del componente
+                  setCharSelected={setCharSelected}
+                />
+              </div>
             ))}
       </div>
 

@@ -4,12 +4,14 @@ import {getComic} from '../../utils/fetchChars';
 
 const Modal = ({character, setOpenModal}) => {
   const [dataComic, setDataComic] = useState ([]);
-  const [url, seturl] = useState (character.comics.collectionURI);
+
 
   useEffect (
     () => {
       const CallComics = async () => {
-        const data = await getComic (url);
+
+        
+        const data = await getComic (character.comics.collectionURI);
 
         setDataComic (data);
       };
@@ -18,7 +20,7 @@ const Modal = ({character, setOpenModal}) => {
     [character]
   );
 
-  console.log (url);
+
   return (
     <div className={styles.modalContain}>
       <div className={styles.modal}>
@@ -44,8 +46,8 @@ const Modal = ({character, setOpenModal}) => {
         </div>
         <div className={styles.scroll}>
 
-          {dataComic.map (el => (
-            <div className={styles.ContainComic}>
+          {dataComic.map ((el,indice) => (
+            <div className={styles.ContainComic} key={indice}>
               <div className={styles.image}>
                 <img
                   src={el.thumbnail.path + '.' + character.thumbnail.extension}
