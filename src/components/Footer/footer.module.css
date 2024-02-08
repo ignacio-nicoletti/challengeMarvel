@@ -2,12 +2,24 @@
   background-color: red;
   width: 100%;
   color: white;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem;
+}
+.contain img {
+  width: 50px;
 }
 
+.social {
+  display: flex;
+  gap: 10px;
+}
 @media only screen and (max-width: 770px) {
-
-
+  .contain {
+    position:relative;
+    flex-direction: column;
+    align-items: center;
+  }
 }
