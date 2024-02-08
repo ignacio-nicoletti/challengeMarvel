@@ -18,22 +18,21 @@
 
 .contain img {
   width: 100%;
-  height: 350px;
-  border-radius: 10px;
+  height: 300px;
+  border-radius: 15px;
 }
 
 .title {
   position: absolute;
-  top: 285px;
+  top: 235px;
   left: 0px;
   color: white;
   font-weight: bold;
   font-size: 1.2rem;
   width: 100%;
   display: flex;
+  border-radius: 10px;
   background: linear-gradient(rgba(0, 0, 0, 0.363), rgba(0, 0, 0, 0.719));
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
 }
 
 .title p {

@@ -2,9 +2,10 @@ import {useEffect, useState} from 'react';
 
 import {getChars} from '../../utils/fetchChars';
 import Navbar from '../../components/navbar/navbar';
-import Cards from '../../components/navbar/cards/cards';
+import Cards from '../../components/cards/cards';
 import styles from './Home.module.css';
 import Modal from '../../components/Modal/modal';
+import Footer from '../../components/Footer/Footer';
 
 const Home = () => {
   const [data, setdata] = useState ([]); //se almacena toda la data
@@ -37,7 +38,7 @@ const Home = () => {
     },
     [search]
   );
-
+  console.log (data);
   return (
     <div>
       <Navbar
@@ -76,6 +77,8 @@ const Home = () => {
       {openModal === true
         ? <Modal setOpenModal={setOpenModal} character={charSelected} />
         : ''}
+
+<Footer/>
     </div>
   );
 };

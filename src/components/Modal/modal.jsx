@@ -11,6 +11,7 @@ const Modal = ({character, setOpenModal}) => {
 
   const CallComics = async () => {
     const data = await getComic (character.comics.collectionURI);
+
     setDataComic (data);
   };
   console.log (dataComic);

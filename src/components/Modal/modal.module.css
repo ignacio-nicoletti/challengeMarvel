@@ -55,10 +55,22 @@
   border-radius: 10px;
 }
 
+.informacionComic {
+  width: 100%;
+  text-align: start;
+  overflow-y: auto;
+  max-height: 150px;
+  margin-right: 1rem;
+}
+
+.informacionComic p {
+  margin: 0;
+}
+
 .titleComic {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
 }
 
 .titleComic p {
@@ -66,12 +78,4 @@
   font-weight: bold;
 }
 
-.informacionComic {
-  text-align: start;
-  overflow-y: auto;
-  max-height: 150px;
-  margin-right: 1rem;
-}
-.informacionComic p {
-  margin: 0;
-}
+
