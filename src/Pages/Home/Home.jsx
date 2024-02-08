@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useSyncExternalStore} from 'react';
 
 import {getChars} from '../../utils/fetchChars';
 import Navbar from '../../components/navbar/navbar';
@@ -18,6 +18,8 @@ const Home = () => {
 
   const [currentPage, setCurrentPage] = useState (1);
   const itemsPerPage = 20; // número de elementos por página
+
+  const [darkMode, setDarkMode] = useState (false);
 
   useEffect (
     () => {
@@ -61,13 +63,15 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className={darkMode === true ? styles.containDark : styles.containNoDark}>
       <Navbar
         search={search}
         setSearch={setSearch}
         setListFavourite={setListFavourite}
         Listfavourite={Listfavourite}
         setCurrentPage={setCurrentPage}
+        setDarkMode={setDarkMode}
+        darkMode={darkMode}
       />
 
       <Pagination
