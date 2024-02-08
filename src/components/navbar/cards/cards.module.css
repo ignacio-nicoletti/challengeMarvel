@@ -32,6 +32,8 @@
   width: 100%;
   display: flex;
   background: linear-gradient(rgba(0, 0, 0, 0.363), rgba(0, 0, 0, 0.719));
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .title p {

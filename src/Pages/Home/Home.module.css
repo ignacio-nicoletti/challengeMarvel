@@ -6,4 +6,15 @@
   margin-block: 3rem;
 }
 
+.advice {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+}
 
+.advice p {
+  background-color: red;
+  padding: 1rem;
+  border-radius: 10px;
+  color: white
+}

@@ -13,9 +13,6 @@ const Home = () => {
   const [openModal, setOpenModal] = useState (false); // abre el modal
   const [charSelected, setCharSelected] = useState ({}); //guarda la informacion de la card seleccionada para el modal
   const [Listfavourite, setListFavourite] = useState (false); //determina si mostrar la data de la api o los guardados
-  const [favouritesChars, setFavouriteChars] = useState (
-    JSON.parse (localStorage.getItem ('Favourites')) || []
-  );
 
   useEffect (
     () => {
@@ -25,15 +22,16 @@ const Home = () => {
   );
 
   const CallCharacter = async () => {
-    const data = await getChars ();
-    Listfavourite === false ? setdata (data) : setdata (favouritesChars); // si clickeo en mis favoritos muestra los favoritos sino todos
+    const data = await getChars (); //llamada a la api
+    Listfavourite === false
+      ? setdata (data)
+      : setdata (JSON.parse (localStorage.getItem ('Favourites'))); // si clickeo en mis favoritos muestra los favoritos sino todos
   };
-  console.log (data);
 
   useEffect (
     () => {
-      const datafiltered = data.filter (el =>
-        el.name.toLowerCase ().includes (search)//filtra lo buscado por searchBar
+      const datafiltered = data.filter (
+        el => el.name.toLowerCase ().includes (search) //filtra lo buscado por searchBar
       );
       setDatafilter (datafiltered);
     },
@@ -67,6 +65,14 @@ const Home = () => {
             ))}
       </div>
 
+      {/* En caso de estar vacia la lista de favoritos un mensaje  */}
+      {data.length !== 0
+        ? ''
+        : <div className={styles.advice}>
+            <p>Lista de favoritos vacia</p>
+          </div>}
+
+      {/* Abre el modal al hacer click en un card */}
       {openModal === true
         ? <Modal setOpenModal={setOpenModal} character={charSelected} />
         : ''}
