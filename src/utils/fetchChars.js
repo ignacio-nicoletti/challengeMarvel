@@ -8,7 +8,7 @@ const hash = "fd4dff99dc9cdeb4b6e86243b862cd79";// https://passwords-generator.o
 export const getChars = async () => {
   try {
     const response = await axios.get(
-      `https://gateway.marvel.com:443/v1/public/characters?ts=${timestamp}&apikey=${public_key}&hash=${hash}&limit=100`
+      `http://gateway.marvel.com:443/v1/public/characters?ts=${timestamp}&apikey=${public_key}&hash=${hash}&limit=100`
     );
 
     return response.data.data.results;
