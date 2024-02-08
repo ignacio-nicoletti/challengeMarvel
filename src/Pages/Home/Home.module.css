@@ -1,7 +1,9 @@
-.cardContain{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    margin-block:3rem ;
+.cardContain {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-block: 3rem;
 }
+
+
