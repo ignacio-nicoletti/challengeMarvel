@@ -8,7 +8,7 @@ const Cards = ({data, setOpenModal, setCharSelected}) => {
   useEffect (
     () => {
       let favourite = JSON.parse (localStorage.getItem ('Favourites')) || [];
-      let pos = favourite.findIndex (el => el.name == data.name);
+      let pos = favourite.findIndex (el => el.name === data.name);
       if (pos > -1) {
         setInFavourite (true);
       } else {
@@ -21,7 +21,7 @@ const Cards = ({data, setOpenModal, setCharSelected}) => {
   //Agrega a favoritos
   const AddFavourites = title => {
     let favourite = JSON.parse (localStorage.getItem ('Favourites')) || [];
-    let pos = favourite.findIndex (el => el.name == title);
+    let pos = favourite.findIndex (el => el.name === title);
     if (pos > -1) {
       //   localStorage.setItem("Favourites", JSON.stringify(favourite));
       //poner un alert que ya esta el producto
@@ -36,7 +36,7 @@ const Cards = ({data, setOpenModal, setCharSelected}) => {
   const DeleteFavourites = title => {
     let favourite = JSON.parse (localStorage.getItem ('Favourites')) || [];
     let favoriteFilter = favourite.filter (
-      el => el.name.toLowerCase () != title.toLowerCase ()
+      el => el.name.toLowerCase () !== title.toLowerCase ()
     );
     console.log (favoriteFilter);
     localStorage.setItem ('Favourites', JSON.stringify (favoriteFilter));
@@ -54,7 +54,7 @@ const Cards = ({data, setOpenModal, setCharSelected}) => {
           viewBox="0 0 24 24"
           stroke-width="1"
           stroke="gainsboro"
-          fill={inFavourite == true ? 'gainsboro' : 'none'}
+          fill={inFavourite === true ? 'gainsboro' : 'none'}
           stroke-linecap="round"
           stroke-linejoin="round"
           onClick={

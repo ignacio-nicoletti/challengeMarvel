@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const public_key = "0cc960625ee7722e285f4d5ce5c5cfed";
-const private_key = "d263fc106fb644b3753f7dbf02c169bf92df62da";
+// const private_key = "d263fc106fb644b3753f7dbf02c169bf92df62da";
 const timestamp = "1";
 const hash = "fd4dff99dc9cdeb4b6e86243b862cd79";// https://passwords-generator.org/md5-hash  (pagina de hasheo)
 

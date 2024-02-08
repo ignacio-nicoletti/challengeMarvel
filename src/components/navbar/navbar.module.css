@@ -1,17 +1,17 @@
 .contain {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding-block: 1rem;
   align-items: center;
-  border: 1px solid gainsboro;
-  gap: 1rem;
+  border-bottom: 1px solid gainsboro;
+  width: 100%;
 }
 
 .searchbar {
   display: flex;
   width: 100%;
   align-items: center;
-  gap: 1rem;
+  padding-right: 1rem;
 }
 
 .searchbar input {
@@ -20,6 +20,9 @@
   border: none;
 }
 
+.logo {
+  padding-inline: 1rem;
+}
 .logo img {
   width: 100px;
   padding-right: 1rem;
@@ -28,7 +31,6 @@
 
 .favourite svg {
   margin-right: 3rem;
-  padding-right: 1rem;
   border-right: 1px solid gainsboro;
 }
 
@@ -36,7 +38,19 @@
   cursor: pointer;
 }
 
-
 @media only screen and (max-width: 770px) {
-  .favourite svg { margin-right: 1.5rem;}
+ 
+  .contain {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  .favourite svg {
+    margin-right: 1rem;
+    border-right: 1px solid gainsboro;
+  }
+
+
 }

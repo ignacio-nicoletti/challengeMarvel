@@ -1,9 +1,10 @@
 import styles from './navbar.module.css';
 import logoMarvel from '../../assets/logomarvel.png';
 
-const Navbar = ({search, setSearch, setListFavourite, Listfavourite}) => {
+const Navbar = ({search, setSearch, setListFavourite, Listfavourite,setCurrentPage}) => {
   const handleSearch = e => {
     setSearch (e.target.value.toLowerCase ());
+    setCurrentPage(1)
   };
 
   return (

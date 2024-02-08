@@ -6,14 +6,14 @@ const Modal = ({character, setOpenModal}) => {
   const [dataComic, setDataComic] = useState ([]);
 
   useEffect (() => {
+    const CallComics = async () => {
+      const data = await getComic (character.comics.collectionURI);
+  
+      setDataComic (data);
+    };
     CallComics ();
-  }, []);
+  }, [character.comics.collectionURI]);
 
-  const CallComics = async () => {
-    const data = await getComic (character.comics.collectionURI);
-
-    setDataComic (data);
-  };
   console.log (dataComic);
   return (
     <div className={styles.modalContain}>

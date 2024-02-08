@@ -6,6 +6,7 @@ import Cards from '../../components/cards/cards';
 import styles from './Home.module.css';
 import Modal from '../../components/Modal/modal';
 import Footer from '../../components/Footer/Footer';
+import Pagination from '../../components/Pagination/pagination';
 
 const Home = () => {
   const [data, setdata] = useState ([]); //se almacena toda la data
@@ -15,30 +16,50 @@ const Home = () => {
   const [charSelected, setCharSelected] = useState ({}); //guarda la informacion de la card seleccionada para el modal
   const [Listfavourite, setListFavourite] = useState (false); //determina si mostrar la data de la api o los guardados
 
+  const [currentPage, setCurrentPage] = useState (1);
+  const itemsPerPage = 20; // número de elementos por página
+
   useEffect (
     () => {
+      const CallCharacter = async () => {
+        const data = await getChars (); //llamada a la api
+        Listfavourite === false
+          ? setdata (data)
+          : setdata (JSON.parse (localStorage.getItem ('Favourites'))); // si clickeo en mis favoritos muestra los favoritos sino todos
+      };
+
       CallCharacter ();
     },
     [Listfavourite]
   );
-
-  const CallCharacter = async () => {
-    const data = await getChars (); //llamada a la api
-    Listfavourite === false
-      ? setdata (data)
-      : setdata (JSON.parse (localStorage.getItem ('Favourites'))); // si clickeo en mis favoritos muestra los favoritos sino todos
-  };
-
+  console.log (data);
   useEffect (
     () => {
-      const datafiltered = data.filter (
-        el => el.name.toLowerCase ().includes (search) //filtra lo buscado por searchBar
-      );
+      let datafiltered;
+      if (search.includes ('http')) {
+        datafiltered = data.filter (
+          el => el.comics.collectionURI.includes(search)//Si lo buscado es un link
+        );
+      } else {
+        datafiltered = data.filter (
+          el => el.name.toLowerCase ().includes (search) //filtra lo buscado por searchBar
+        );
+      }
       setDatafilter (datafiltered);
     },
-    [search]
+    [search, data]
   );
-  console.log (data);
+
+  //paginado
+  const totalPages = Math.ceil (datafilter.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = datafilter.slice (startIndex, endIndex);
+
+  const handlePageChange = page => {
+    setCurrentPage (page);
+  };
+
   return (
     <div>
       <Navbar
@@ -46,18 +67,25 @@ const Home = () => {
         setSearch={setSearch}
         setListFavourite={setListFavourite}
         Listfavourite={Listfavourite}
+        setCurrentPage={setCurrentPage}
+      />
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
       />
 
       <div className={styles.cardContain}>
         {search !== '' // en caso de haber algo en la barra de busqueda mapea la informacion filtrada
-          ? datafilter.map (el => (
+          ? currentItems.map (el => (
               <Cards
                 setOpenModal={setOpenModal}
                 data={el}
                 setCharSelected={setCharSelected}
               />
             ))
-          : data.map ((el) => ( // sino mapea todo
+          : currentItems.map ((el) => ( // sino mapea todo
               <Cards
                 setOpenModal={setOpenModal}
                 data={el} //podria pasarle o los parametros necesarios para el mapeo o todo el objeto y luego manipularlo dentro del componente
@@ -65,6 +93,12 @@ const Home = () => {
               />
             ))}
       </div>
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
 
       {/* En caso de estar vacia la lista de favoritos un mensaje  */}
       {data.length !== 0
@@ -78,7 +112,7 @@ const Home = () => {
         ? <Modal setOpenModal={setOpenModal} character={charSelected} />
         : ''}
 
-<Footer/>
+      <Footer />
     </div>
   );
 };

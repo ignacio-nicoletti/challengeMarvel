@@ -1,5 +1,13 @@
 .contain {
   background-color: red;
-  padding: 1rem;
+  width: 100%;
   color: white;
+  position: absolute;
+  bottom: 0;
+  
+}
+
+@media only screen and (max-width: 770px) {
+
+
 }
