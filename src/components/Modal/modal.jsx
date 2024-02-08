@@ -7,7 +7,7 @@ const Modal = ({character, setOpenModal}) => {
 
   useEffect (() => {
     const CallComics = async () => {
-      const data = await getComic (character.comics.collectionURI);
+      const data = await getComic (character?.comics?.collectionURI);
   
       setDataComic (data);
     };
