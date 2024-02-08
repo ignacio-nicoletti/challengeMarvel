@@ -4,17 +4,21 @@ import {getComic} from '../../utils/fetchChars';
 
 const Modal = ({character, setOpenModal}) => {
   const [dataComic, setDataComic] = useState ([]);
+  const [url, seturl] = useState (character.comics.collectionURI);
 
-  useEffect (() => {
-    const CallComics = async () => {
-      const data = await getComic (character?.comics?.collectionURI);
-  
-      setDataComic (data);
-    };
-    CallComics ();
-  }, [character]);
+  useEffect (
+    () => {
+      const CallComics = async () => {
+        const data = await getComic (url);
 
-  console.log (dataComic);
+        setDataComic (data);
+      };
+      CallComics ();
+    },
+    [character]
+  );
+
+  console.log (url);
   return (
     <div className={styles.modalContain}>
       <div className={styles.modal}>
