@@ -6,7 +6,7 @@
   bottom: 0;
   display: flex;
   justify-content: space-around;
-  padding: 0.5rem;
+  padding-block: 1rem;
 }
 .contain img {
   width: 50px;
