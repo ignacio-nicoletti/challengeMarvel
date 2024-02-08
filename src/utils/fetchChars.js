@@ -23,7 +23,7 @@ export const getComic = async (url) => {
     const response = await axios.get(
       `${url}?ts=${timestamp}&apikey=${public_key}&hash=${hash}`
     );
-
+console.log(response);
     return response.data.data.results;
   } catch (error) {
     console.log(error);
