@@ -12,7 +12,7 @@ const Modal = ({character, setOpenModal}) => {
       setDataComic (data);
     };
     CallComics ();
-  }, [character.comics.collectionURI]);
+  }, [character]);
 
   console.log (dataComic);
   return (
