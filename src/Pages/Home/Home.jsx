@@ -20,12 +20,13 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState (1);
   const itemsPerPage = 20; // número de elementos por página
 
-  const [darkMode, setDarkMode] = useState (false);
+  const [darkMode, setDarkMode] = useState (false); //alterna el darkMode
 
   useEffect (
     () => {
+      localStorage.setItem ('Favourites', JSON.stringify ([])); // en caso de entrar a favoritos por primera vez a la pagina ya la setea en [] para corregir errores
       const CallCharacter = async () => {
-        const data = await getChars (); //llamada a la api
+        // const data = await getChars (); //llamada a la api
         Listfavourite === false
           ? setdata (data)
           : setdata (JSON.parse (localStorage.getItem ('Favourites'))); // si clickeo en mis favoritos muestra los favoritos sino todos
@@ -79,6 +80,7 @@ const Home = () => {
 
       {data.length !== 0 // si hay data mapeala sino pone un loading
         ? <div>
+
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
@@ -120,7 +122,11 @@ const Home = () => {
 
       {/* En caso de estar vacia la lista de favoritos un mensaje  */}
       {data.length === 0 && Listfavourite === true
-        ? <div className={styles.advice}>
+        ? <div
+            className={styles.advice}
+            data-aos="zoom-in"
+            data-aos-duration="1500"
+          >
             <p>Lista de favoritos vacia</p>
           </div>
         : ''}
@@ -129,8 +135,10 @@ const Home = () => {
       {openModal === true
         ? <Modal setOpenModal={setOpenModal} character={charSelected} />
         : ''}
-
-      <Footer />
+      
+      <div className={styles.Footer}>
+        <Footer />
+      </div>
 
     </div>
   );

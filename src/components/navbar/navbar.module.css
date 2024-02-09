@@ -20,7 +20,9 @@
   padding: 1rem;
   border: none;
   border-radius: 10px;
+  border: 1px solid red;
 }
+
 
 .logo {
   padding-inline: 1rem;
@@ -35,12 +37,16 @@
 }
 
 .favourite svg {
-  margin-right: 3rem;
-  border-right: 1px solid gainsboro;
+  margin-inline: 3rem;
 }
 
 .favourite :hover {
   cursor: pointer;
+}
+
+.star{
+  border-right: 1px solid gainsboro;
+  padding-right: 1rem;
 }
 
 .darkMode {
@@ -58,6 +64,7 @@
   }
 
   .favourite svg {
+    margin-inline: 0rem;
     margin-right: 1rem;
     border-right: 0;
   }
@@ -73,6 +80,7 @@
     flex-direction: column;
     justify-content: center;
     border-bottom: 1px solid gainsboro;
+    padding-block: 1rem;
   }
   .ContainSearchabarMobile {
     display: flex;
@@ -91,6 +99,7 @@
   .searchbar input {
     border: none;
     border-radius: 10px;
+    width: auto;
   }
 
   .searchbar input:focus {
@@ -99,5 +108,9 @@
 
   .darkMode {
     padding-inline: 0rem;
+  }
+  .star{
+    border-right: 1px solid gainsboro;
+    padding-right: 0rem;
   }
 }

@@ -1,12 +1,11 @@
 .contain {
-  background-color: red;
+  background-color: orange;
   width: 100%;
   color: white;
-  position: fixed;
-  bottom: 0;
+  position:absolute ;
   display: flex;
   justify-content: space-around;
-  padding-block: 1rem;
+  padding-block: 0.5rem;
 }
 .contain img {
   width: 50px;
@@ -18,8 +17,15 @@
 }
 @media only screen and (max-width: 770px) {
   .contain {
-    position: fixed;
     flex-direction: column;
     align-items: center;
+    padding-block: 0rem;
+  }
+  .contain img {
+    width: 40px;
+  }
+  .social {
+    display: flex;
+    gap: 10px;
   }
 }

@@ -31,3 +31,4 @@ console.log(response);
   }
 };
 
+//se puede resumir cada funcion de peticion en una instancia de axios pasandole, su metodo, url y demas informacion necesaria
