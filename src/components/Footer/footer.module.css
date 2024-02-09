@@ -18,7 +18,7 @@
 }
 @media only screen and (max-width: 770px) {
   .contain {
-    position:relative;
+    position: fixed;
     flex-direction: column;
     align-items: center;
   }

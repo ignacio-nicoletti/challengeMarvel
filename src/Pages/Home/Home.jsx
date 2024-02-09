@@ -25,7 +25,7 @@ const Home = () => {
   useEffect (
     () => {
       const CallCharacter = async () => {
-        const data = await getChars (); //llamada a la api
+        // const data = await getChars (); //llamada a la api
         Listfavourite === false
           ? setdata (data)
           : setdata (JSON.parse (localStorage.getItem ('Favourites'))); // si clickeo en mis favoritos muestra los favoritos sino todos
@@ -35,7 +35,7 @@ const Home = () => {
     },
     [Listfavourite]
   );
-  console.log (data[0]);
+
   useEffect (
     () => {
       let datafiltered;
@@ -111,9 +111,12 @@ const Home = () => {
               onPageChange={handlePageChange}
             />
           </div>
-        : <div className={styles.loading}>
-            <img src={loading} alt='gift loading'/>
-          </div>}
+        : Listfavourite === false
+            ? <div className={styles.loading}>
+                <img src={loading} alt="gift loading" />
+              </div>
+            : ''}
+
       {/* En caso de estar vacia la lista de favoritos un mensaje  */}
       {data.length === 0 && Listfavourite === true
         ? <div className={styles.advice}>
