@@ -25,7 +25,7 @@ const Home = () => {
   useEffect (
     () => {
       const CallCharacter = async () => {
-        // const data = await getChars (); //llamada a la api
+        const data = await getChars (); //llamada a la api
         Listfavourite === false
           ? setdata (data)
           : setdata (JSON.parse (localStorage.getItem ('Favourites'))); // si clickeo en mis favoritos muestra los favoritos sino todos
@@ -54,10 +54,10 @@ const Home = () => {
   );
 
   //paginado
-  const totalPages = Math.ceil (datafilter.length / itemsPerPage);
+  const totalPages = Math.ceil (datafilter.length / itemsPerPage); //divide la data redondeando a un numero mayor para saber cuantas page son
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentItems = datafilter.slice (startIndex, endIndex);
+  const currentItems = datafilter.slice (startIndex, endIndex); //corta la data entre start y end
 
   const handlePageChange = page => {
     setCurrentPage (page);
@@ -76,7 +76,8 @@ const Home = () => {
         setDarkMode={setDarkMode}
         darkMode={darkMode}
       />
-      {data.length !== 0
+
+      {data.length !== 0 // si hay data mapeala sino pone un loading
         ? <div>
             <Pagination
               currentPage={currentPage}
@@ -128,10 +129,9 @@ const Home = () => {
       {openModal === true
         ? <Modal setOpenModal={setOpenModal} character={charSelected} />
         : ''}
-      <div className={styles.footer}>
 
-        <Footer />
-      </div>
+      <Footer />
+
     </div>
   );
 };

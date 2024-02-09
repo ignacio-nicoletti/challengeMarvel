@@ -4,7 +4,7 @@ import styles from './cards.module.css';
 const Cards = ({data, setOpenModal, setCharSelected}) => {
   const [inFavourite, setInFavourite] = useState (false);
 
-  //Chequea al montar la card que se encuentre en favoritos
+  //Chequea al montar la card que se encuentre en favoritos para pintar la star
   useEffect (
     () => {
       let favourite = JSON.parse (localStorage.getItem ('Favourites')) || [];
@@ -22,10 +22,8 @@ const Cards = ({data, setOpenModal, setCharSelected}) => {
   const AddFavourites = title => {
     let favourite = JSON.parse (localStorage.getItem ('Favourites')) || [];
     let pos = favourite.findIndex (el => el.name === title);
-    if (pos > -1) {
-      //   localStorage.setItem("Favourites", JSON.stringify(favourite));
-      //poner un alert que ya esta el producto
-    } else {
+    if (pos <= 0) {
+      //si devuelve -1 no va agregarlo a favoritos
       favourite.push (data);
       localStorage.setItem ('Favourites', JSON.stringify (favourite));
       setInFavourite (true);
@@ -38,7 +36,6 @@ const Cards = ({data, setOpenModal, setCharSelected}) => {
     let favoriteFilter = favourite.filter (
       el => el.name.toLowerCase () !== title.toLowerCase ()
     );
-    console.log (favoriteFilter);
     localStorage.setItem ('Favourites', JSON.stringify (favoriteFilter));
     setInFavourite (false);
   };

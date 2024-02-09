@@ -16,7 +16,7 @@ const Footer = () => {
           <img src={linkedinIcon} alt="Linkedin" />
         </a>
         <a
-          href="https://github.com/ignacio-nicoletti"
+          href="https://github.com/ignacio-nicoletti/challengeMarvel"
           target="_blank"
           rel="noreferrer"
         >
