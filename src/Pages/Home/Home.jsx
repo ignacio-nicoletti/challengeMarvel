@@ -1,4 +1,4 @@
-import {useEffect, useState, useSyncExternalStore} from 'react';
+import {useEffect, useState} from 'react';
 
 import {getChars} from '../../utils/fetchChars';
 import Navbar from '../../components/navbar/navbar';
@@ -7,6 +7,7 @@ import styles from './Home.module.css';
 import Modal from '../../components/Modal/modal';
 import Footer from '../../components/Footer/Footer';
 import Pagination from '../../components/Pagination/pagination';
+import loading from '../../assets/marvelLoading.gif';
 
 const Home = () => {
   const [data, setdata] = useState ([]); //se almacena toda la data
@@ -63,7 +64,9 @@ const Home = () => {
   };
 
   return (
-    <div className={darkMode === true ? styles.containDark : styles.containNoDark}>
+    <div
+      className={darkMode === true ? styles.containDark : styles.containNoDark}
+    >
       <Navbar
         search={search}
         setSearch={setSearch}
@@ -73,55 +76,59 @@ const Home = () => {
         setDarkMode={setDarkMode}
         darkMode={darkMode}
       />
-
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
-
-      <div className={styles.cardContain}>
-        {search !== '' // en caso de haber algo en la barra de busqueda mapea la informacion filtrada
-          ? currentItems.map ((el, indice) => (
-              <div key={indice}>
-
-                <Cards
-                  setOpenModal={setOpenModal}
-                  data={el}
-                  setCharSelected={setCharSelected}
-                />
-              </div>
-            ))
-          : currentItems.map ((el, indice) => ( // sino mapea todo
-              <div key={indice}>
-                <Cards
-                  setOpenModal={setOpenModal}
-                  data={el} //podria pasarle o los parametros necesarios para el mapeo o todo el objeto y luego manipularlo dentro del componente
-                  setCharSelected={setCharSelected}
-                />
-              </div>
-            ))}
-      </div>
-
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
-
-      {/* En caso de estar vacia la lista de favoritos un mensaje  */}
       {data.length !== 0
-        ? ''
-        : <div className={styles.advice}>
-            <p>Lista de favoritos vacia</p>
+        ? <div>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+            <div className={styles.cardContain}>
+              {search !== '' // en caso de haber algo en la barra de busqueda mapea la informacion filtrada
+                ? currentItems.map ((el, indice) => (
+                    <div key={indice}>
+
+                      <Cards
+                        setOpenModal={setOpenModal}
+                        data={el}
+                        setCharSelected={setCharSelected}
+                      />
+                    </div>
+                  ))
+                : currentItems.map ((el, indice) => ( // sino mapea todo
+                    <div key={indice}>
+                      <Cards
+                        setOpenModal={setOpenModal}
+                        data={el} //podria pasarle o los parametros necesarios para el mapeo o todo el objeto y luego manipularlo dentro del componente
+                        setCharSelected={setCharSelected}
+                      />
+                    </div>
+                  ))}
+            </div>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          </div>
+        : <div className={styles.loading}>
+            <img src={loading} alt='gift loading'/>
           </div>}
+      {/* En caso de estar vacia la lista de favoritos un mensaje  */}
+      {data.length === 0 && Listfavourite === true
+        ? <div className={styles.advice}>
+            <p>Lista de favoritos vacia</p>
+          </div>
+        : ''}
 
       {/* Abre el modal al hacer click en un card */}
       {openModal === true
         ? <Modal setOpenModal={setOpenModal} character={charSelected} />
         : ''}
+      <div className={styles.footer}>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 };

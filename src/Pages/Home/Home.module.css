@@ -4,10 +4,7 @@
 }
 .containDark {
   background-color: black;
-  height:100%;
- 
-
-  
+  height: 100%;
 }
 
 .cardContain {
@@ -16,7 +13,10 @@
   gap: 30px;
   justify-content: center;
   margin-block: 3rem;
+}
 
+.loading img {
+  border-radius: 50%;
 }
 
 .advice {
@@ -30,4 +30,19 @@
   padding: 1rem;
   border-radius: 10px;
   color: white;
+}
+
+@media only screen and (max-width: 770px) {
+  .loading {
+    display: flex;
+    justify-content: center;
+    margin-block: 2rem;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+  }
+  .loading img {
+    width: 100%;
+    height: 40%;
+  }
 }

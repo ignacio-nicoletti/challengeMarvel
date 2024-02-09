@@ -44,7 +44,7 @@ const Cards = ({data, setOpenModal, setCharSelected}) => {
   };
 
   return (
-    <div className={styles.contain} data-aos="zoom-in" data-aos-duration="2000">
+    <div className={styles.contain} data-aos="zoom-in" data-aos-duration="1500">
       <div className={styles.favourite}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
