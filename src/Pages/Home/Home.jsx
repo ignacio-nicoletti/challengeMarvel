@@ -108,11 +108,11 @@ const Home = () => {
                     </div>
                   ))}
             </div>
-            <Pagination
+            {/* <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
               onPageChange={handlePageChange}
-            />
+            /> */}
           </div>
         : Listfavourite === false
             ? <div className={styles.loading}>

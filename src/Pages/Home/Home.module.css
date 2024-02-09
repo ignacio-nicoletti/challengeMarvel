@@ -14,7 +14,7 @@
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
-  margin-block: 3rem;
+  padding-bottom: 6rem
 }
 
 .loading {
@@ -34,7 +34,7 @@
 .advice {
   display: flex;
   justify-content: center;
-  height: 84.9vh;
+  height: 100vh;
   align-items: center;
 }
 
@@ -47,6 +47,10 @@
 }
 
 @media only screen and (max-width: 770px) {
+  .cardContain {
+   
+    padding-bottom: 10rem
+  }
   .loading {
     display: flex;
     justify-content: center;
