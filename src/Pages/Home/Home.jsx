@@ -22,17 +22,19 @@ const Home = () => {
 
   const [darkMode, setDarkMode] = useState (false); //alterna el darkMode
 
+
+
   useEffect (
     () => {
-      localStorage.setItem ('Favourites', JSON.stringify ([])); // en caso de entrar a favoritos por primera vez a la pagina ya la setea en [] para corregir errores
-      const CallCharacter = async () => {
-        const data = await getChars (); //llamada a la api
-        Listfavourite === false
-          ? setdata (data)
-          : setdata (JSON.parse (localStorage.getItem ('Favourites'))); // si clickeo en mis favoritos muestra los favoritos sino todos
-      };
+    
+        const CallCharacter = async () => {
+          const data = await getChars (); //llamada a la api
+          Listfavourite === false
+            ? setdata (data)
+            : setdata (JSON.parse (localStorage.getItem ('Favourites'))); // si clickeo en mis favoritos muestra los favoritos sino todos
+        };
+        CallCharacter ();    
 
-      CallCharacter ();
     },
     [Listfavourite]
   );
@@ -135,7 +137,7 @@ const Home = () => {
       {openModal === true
         ? <Modal setOpenModal={setOpenModal} character={charSelected} />
         : ''}
-      
+
       <div className={styles.Footer}>
         <Footer />
       </div>

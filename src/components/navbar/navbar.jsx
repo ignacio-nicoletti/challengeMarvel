@@ -1,5 +1,6 @@
 import styles from './navbar.module.css';
 import logoMarvel from '../../assets/logomarvel.png';
+import {useEffect, useState} from 'react';
 
 const Navbar = ({
   search,
@@ -14,6 +15,10 @@ const Navbar = ({
     setSearch (e.target.value.toLowerCase ());
     setCurrentPage (1);
   };
+
+useEffect(()=>{
+  localStorage.setItem ('Favourites', JSON.stringify ([]));
+},[])
 
   return (
     <div>

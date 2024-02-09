@@ -7,7 +7,7 @@ const Cards = ({data, setOpenModal, setCharSelected}) => {
   //Chequea al montar la card que se encuentre en favoritos para pintar la star
   useEffect (
     () => {
-      let favourite = JSON.parse (localStorage.getItem ('Favourites')) || [];
+      let favourite = JSON.parse (localStorage.getItem ('Favourites')) || []; //pinta los favoritos de las cards
       let pos = favourite.findIndex (el => el.name === data.name);
       if (pos > -1) {
         setInFavourite (true);
