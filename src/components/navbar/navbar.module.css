@@ -30,6 +30,9 @@
   padding-right: 1rem;
   border-right: 1px solid gainsboro;
 }
+.favourite {
+  display: flex;
+}
 
 .favourite svg {
   margin-right: 3rem;
@@ -56,7 +59,7 @@
 
   .favourite svg {
     margin-right: 1rem;
-    border-right: 0
+    border-right: 0;
   }
 
   .logo img {
@@ -71,7 +74,7 @@
     justify-content: center;
     border-bottom: 1px solid gainsboro;
   }
-  .ContainSearchabarMobile{
+  .ContainSearchabarMobile {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,14 +84,20 @@
     display: flex;
     width: auto;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
+    padding-inline:1rem;
   }
-  
+
   .searchbar input {
     border: none;
     border-radius: 10px;
   }
 
   .searchbar input:focus {
-    border: 1px solid red;}
+    border: 1px solid red;
+  }
+
+  .darkMode {
+    padding-inline: 0rem;
+  }
 }
