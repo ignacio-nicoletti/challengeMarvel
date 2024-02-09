@@ -26,7 +26,7 @@ const Home = () => {
     () => {
       localStorage.setItem ('Favourites', JSON.stringify ([])); // en caso de entrar a favoritos por primera vez a la pagina ya la setea en [] para corregir errores
       const CallCharacter = async () => {
-        // const data = await getChars (); //llamada a la api
+        const data = await getChars (); //llamada a la api
         Listfavourite === false
           ? setdata (data)
           : setdata (JSON.parse (localStorage.getItem ('Favourites'))); // si clickeo en mis favoritos muestra los favoritos sino todos
